@@ -1,17 +1,22 @@
-import React, { Component } from 'react'
-import './index.css'
+import React, { Component } from "react";
+import "./index.css";
 export default class Item extends Component {
   render() {
+    const { delId, obj, chooseId } = this.props;
     return (
       <li>
         <label>
-          <input type="checkbox" />
-          <span>xxxxx</span>
+          <input type="checkbox" onChange={() => chooseId(obj.id)} />
+          <span>{obj.value}</span>
         </label>
-        <button className="btn btn-danger" style={{ display: 'none' }}>
+        <button
+          className="btn btn-danger"
+          style={{ display: obj.checked ? "" : "none" }}
+          onClick={() => delId(obj.id)}
+        >
           删除
         </button>
       </li>
-    )
+    );
   }
 }
