@@ -6,7 +6,11 @@ export default class Item extends Component {
     return (
       <li>
         <label>
-          <input type="checkbox" onChange={() => chooseId(obj.id)} />
+          <input
+            type="checkbox"
+            onChange={() => chooseId(obj.id)}
+            checked={obj.checked}
+          />
           <span>{obj.value}</span>
         </label>
         <button

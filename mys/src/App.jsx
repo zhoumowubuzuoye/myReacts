@@ -37,14 +37,13 @@ export default class App extends Component {
     let doList = this.state.doList;
     doList.map((item) => {
       if (item.id === id) {
-        item.checked = item.checked ? true : false;
+        item.checked = item.checked ? false : true;
       }
       return item;
     });
-    let allChecked = doList.some((item) => {
-      return !(item.checked === "none");
+    let allChecked = doList.every((item) => {
+      return item.checked === true;
     });
-    console.log(allChecked);
     this.setState({
       doList: doList,
       allChecked,
@@ -62,11 +61,19 @@ export default class App extends Component {
   allCheckedButton = (checked) => {
     let { doList } = this.state;
     doList = doList.map((item) => {
-      item.checked = checked ? "" : "none";
+      item.checked = checked ? true : false;
       return item;
     });
-    console.log(doList);
     this.setState({ allChecked: checked, doList });
+  };
+  allDel = () => {
+    let { doList } = this.state;
+    doList = doList.filter((item) => {
+      return item.checked !== true;
+    });
+    this.setState({
+      doList,
+    });
   };
   render() {
     const { doString, doList, allChecked } = this.state;
@@ -83,6 +90,7 @@ export default class App extends Component {
             doList={doList}
             allChecked={allChecked}
             allCheckedButton={this.allCheckedButton}
+            allDel={this.allDel}
           />
         </div>
       </div>
