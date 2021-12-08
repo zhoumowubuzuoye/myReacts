@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import "./App.css";
-import Item from "./components/Item";
-import Search from "./components/Search";
+import React, { Component } from 'react'
+import './App.css'
+import Item from './components/Item'
+import Search from './components/Search'
 export default class App extends Component {
   render() {
     return (
@@ -9,6 +9,6 @@ export default class App extends Component {
         <Search />
         <Item />
       </div>
-    );
+    )
   }
 }

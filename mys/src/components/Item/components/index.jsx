@@ -1,17 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import './index.css'
 export default class List extends Component {
   render() {
+    const { avatar_url, login, html_url } = this.props
     return (
       <div className="card">
-        <a href="https://github.com/reactjs" target="_blank">
-          <img
-            src="https://avatars.githubusercontent.com/u/6412038?v=3"
-            style={{ width: "100px" }}
-          />
+        <a href={html_url} target="_blank" rel="noreferrer">
+          <img src={avatar_url} style={{ width: '100px' }} alt="haha" />
         </a>
-        <p className="card-text">reactjs</p>
+        <p className="card-text">{login}</p>
       </div>
-    );
+    )
   }
 }
