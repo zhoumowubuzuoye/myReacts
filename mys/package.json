@@ -3,20 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.4.3",
+    "antd": "^4.17.4",
     "axios": "^0.24.0",
+    "caniuse-lite": "^1.0.30001291",
     "cra-template": "1.1.2",
+    "craco-less": "^1.20.0",
     "pubsub-js": "^1.9.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^6.0.2",
     "react-router-dom": "5",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.2",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
