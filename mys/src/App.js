@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import './App.less'
 import store from './redux/store'
+import {
+  createAddNumberAction,
+  createDelNumberAction,
+} from './redux/count_action'
 export default class App extends Component {
   componentDidMount() {
     store.subscribe(() => {
@@ -11,16 +15,10 @@ export default class App extends Component {
     console.log(this.selectBox.value)
   }
   addNumber = () => {
-    store.dispatch({
-      type: 'addNumber',
-      data: +this.selectBox.value,
-    })
+    store.dispatch(createAddNumberAction(+this.selectBox.value))
   }
   delNumber = () => {
-    store.dispatch({
-      type: 'delNumber',
-      data: +this.selectBox.value,
-    })
+    store.dispatch(createDelNumberAction(+this.selectBox.value))
   }
   addNumberIsOdd = () => {
     const { sum } = this.state
