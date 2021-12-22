@@ -1,10 +1,18 @@
+import {
+  ADDNUMBER,
+  DELNUMBER
+} from './constent'
 const initState = 99
 export default function countReducer(preState = initState, action) {
-  const { type, data } = action
+  console.log('action',action);
+  const {
+    type,
+    data
+  } = action
   switch (type) {
-    case 'addNumber':
+    case ADDNUMBER:
       return preState + data
-    case 'delNumber':
+    case DELNUMBER:
       return preState - data
     default:
       return preState
