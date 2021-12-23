@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./App.less";
-import Demo from "./components/Count";
+import Counts from "./containers/Counts";
+import Person from "./containers/Person";
 export default class App extends Component {
   render() {
     return (
       <div>
-        {" "}
-        <Demo />{" "}
+        <Counts />
+        <Person />
       </div>
     );
   }
