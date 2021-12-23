@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 export default class Counts extends Component {
   chooseValue = () => {
-    console.log(this.selectBox.value);
   };
   addNumber = () => {
     this.props.add(+this.selectBox.value);

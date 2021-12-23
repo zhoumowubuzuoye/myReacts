@@ -1,4 +1,4 @@
-import { ADDNUMBER, DELNUMBER } from './constent'
+import { ADDNUMBER, DELNUMBER } from '../constent'
 export const createAddNumberAction = data => ({
   data: data,
   type: ADDNUMBER,

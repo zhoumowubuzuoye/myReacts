@@ -4,11 +4,10 @@ import {
   creatActionAddNumberAction,
   createAddNumberAction,
   createDelNumberAction,
-} from "../../redux/count_action";
+} from "../../redux/actions/count";
 
 class Counts extends Component {
   chooseValue = () => {
-    console.log(this.selectBox.value);
   };
   addNumber = () => {
     this.props.add(+this.selectBox.value);
@@ -48,7 +47,7 @@ class Counts extends Component {
   }
 }
 
-export default connect((state) => ({ count: state }), {
+export default connect((state) => ({ count: state.countReducer }), {
   add: createAddNumberAction,
   del: createDelNumberAction,
   action: creatActionAddNumberAction,
