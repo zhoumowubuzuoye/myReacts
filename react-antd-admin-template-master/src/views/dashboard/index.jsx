@@ -33,7 +33,10 @@ const Dashboard = () => {
     lineChartDefaultData["New Visits"]
   );
 
-  const handleSetLineChartData = (type) => setLineChartData(lineChartDefaultData[type]);
+  const handleSetLineChartData = (type) => {
+    console.log(this,type);
+    setLineChartData(lineChartDefaultData[type]);
+  };
 
   return (
     <div className="app-container">
