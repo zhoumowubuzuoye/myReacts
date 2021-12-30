@@ -178,5 +178,11 @@ const menuList = [
     icon: "bug",
     roles:["admin"]
   },
+  {
+    title: "数字社会",
+    path: "/city",
+    icon: "bug",
+    roles:["admin","editor","guest"]
+  },
 ];
 export default menuList;

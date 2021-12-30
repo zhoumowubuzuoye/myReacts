@@ -18,9 +18,9 @@ export const City = () => {
     <div>
       <CityHeader setTableList={getTabList} />
       <Layout>
-        <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Sider trigger={null} collapsible collapsed={collapsed} className="city-select">
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+          <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]} className="city-menu">
             <Menu.Item key="1">
               <Icon type="user" />
               <span>nav 1</span>
