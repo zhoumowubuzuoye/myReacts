@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { Redirect, withRouter, Route, Switch, Link } from "react-router-dom";
+
 import "./index.less";
+import cityConfig from "../../config/cityConfig";
+import cityMap from "../../config/cityMap";
 import CityHeader from "./components/Header";
 import { Layout, Menu, Icon } from "antd";
 
 const { Header, Sider, Content } = Layout;
-export const City = () => {
+export const City = (props) => {
   const [tableList, setTableList] = useState([]);
   const [collapsed, setCollapsed] = useState(false);
   const getTabList = (data) => {
@@ -18,21 +22,27 @@ export const City = () => {
     <div>
       <CityHeader setTableList={getTabList} />
       <Layout>
-        <Sider trigger={null} collapsible collapsed={collapsed} className="city-select">
+        <Sider
+          trigger={null}
+          collapsible
+          collapsed={collapsed}
+          className="city-select"
+        >
           <div className="logo" />
-          <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]} className="city-menu">
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span>nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span>nav 3</span>
-            </Menu.Item>
+          <Menu
+            theme="light"
+            mode="inline"
+            defaultSelectedKeys={props.location.pathname}
+            className="city-menu"
+          >
+            {cityConfig.map((item) => (
+              <Menu.Item key={item.route}>
+                <Link to={item.route}>
+                  <Icon type={item.icon} />
+                  <span>{item.name}</span>
+                </Link>
+              </Menu.Item>
+            ))}
           </Menu>
         </Sider>
         <Layout>
@@ -51,7 +61,16 @@ export const City = () => {
               minHeight: 280,
             }}
           >
-            Content
+            <Switch>
+              {cityMap.map((item) => (
+                <Route
+                  path={item.path}
+                  key={item.path}
+                  component={item.component}
+                ></Route>
+              ))}
+              <Redirect to="/city/home"></Redirect>
+            </Switch>
           </Content>
         </Layout>
       </Layout>
@@ -59,4 +78,4 @@ export const City = () => {
   );
 };
 
-export default City;
+export default withRouter(City);
