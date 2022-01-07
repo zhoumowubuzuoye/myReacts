@@ -1,6 +1,28 @@
 .city-select {
   background-color: inherit;
 }
+.layout {
+  margin-top: 20px;
+}
+.layout .layout-header {
+  display: flex;
+  align-items: center;
+}
+.layout .Breadcrumb {
+  margin-left: 20px;
+}
+.header {
+  height: 40px;
+  background: #1492FF;
+  border-radius: 2px 2px 0px 0px;
+  width: 100%;
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #FFFEFE;
+  line-height: 40px;
+  text-align: center;
+}
 .trigger {
   margin-left: 20px;
 }

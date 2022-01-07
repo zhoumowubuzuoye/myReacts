@@ -97,6 +97,16 @@ const Bug = Loadable({
   loading: Loading
 });
 
+const CityHome = Loadable({
+  loader: () => import('@/views/city/home'),
+  loading: Loading
+})
+const IndexHomes = Loadable({
+  loader: () => import('@/views/city/indexs'),
+  loading: Loading
+})
+
+
 const City = Loadable({
   loader: () => import('@/views/city'),
   loading: Loading
@@ -114,11 +124,6 @@ export default [{
   {
     path: "/guide",
     component: Guide,
-    roles: ["admin", "editor"]
-  },
-  {
-    path: "/city",
-    component: City,
     roles: ["admin", "editor"]
   },
   {
@@ -225,5 +230,14 @@ export default [{
     path: "/error/404",
     component: Error404
   },
-
+  {
+    path: "/city/home",
+    roles: ["admin", "editor", "guest"],
+    component: CityHome
+  },
+  {
+    path: "/city/indexs",
+    roles: ["admin", "editor", "guest"],
+    component: IndexHomes
+  },
 ];

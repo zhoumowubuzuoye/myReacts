@@ -1,7 +1,7 @@
 const des = [{
     route: '/city/indexs',
     name: '首页',
-    icon: 'home',
+    icon: 'linkedin',
     roles: ["admin", "editor", "guest"]
 
 }, {

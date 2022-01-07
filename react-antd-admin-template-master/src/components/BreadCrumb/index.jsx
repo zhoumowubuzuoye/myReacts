@@ -43,6 +43,7 @@ const BreadCrumb = (props) => {
   if (first && first.title.trim() !== "首页") {
     path = [{ title: "首页", path: "/dashboard" }].concat(path);
   }
+  console.log(path);
   return (
     <div className="Breadcrumb-container">
       <Breadcrumb>
