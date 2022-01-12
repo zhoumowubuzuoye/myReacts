@@ -13,8 +13,46 @@ export default () => {
     pageNumber: 1,
     pageSize: 10,
   });
+  const [page, setPage] = useState(1);
+  const [pageChange, setPageChange] = useState(false);
   useEffect(() => {
-    handleSubmit();
+    handleSubmit(1);
+  }, []);
+  useEffect(() => {
+    const getData = pubsub.subscribe("getData", () => {
+      handleSubmit(page);
+    });
+    const getPage = pubsub.subscribe("page", (name, data) => {
+      console.log(data);
+      setPage(data);
+      setListData({ ...listData, pageNumber: data });
+      setPageChange(true);
+    });
+    return () => {
+      pubsub.unsubscribe(getData);
+      pubsub.unsubscribe(getPage);
+    };
+  });
+  useEffect(() => {
+    if (pageChange) {
+      tableList(listData).then((res) => {
+        console.log(listData);
+        console.log(res.data.data.items);
+        if (res.data.data.items.length > 0) {
+          pubsub.publish("tableData", res.data.data);
+        } else {
+          if (res.data.data.total > 0) {
+            pubsub.publish("page", page - 1);
+            pubsub.publish("currentPage", page - 1);
+          } else {
+            pubsub.publish("tableData", []);
+          }
+        }
+        setPageChange(false);
+      });
+      setPageChange(false);
+    } else {
+    }
   });
   const callback = (key) => {
     console.log(key);
@@ -39,16 +77,16 @@ export default () => {
     });
     console.log(listData);
   };
-  const handleSubmit = () => {
-    tableList(listData).then((res) => {
-      console.log(res);
-      pubsub.publish("tableData", res.data.data.items);
-    });
+  const handleSubmit = (page) => {
+    setPage(page);
+    pubsub.publish("currentPage", page);
+    setListData({ ...listData, pageNumber: page });
+    setPageChange(true);
   };
   return (
     <Collapse defaultActiveKey={["1"]} onChange={callback}>
       <Panel header="筛选" key="1">
-        <Form layout="inline" onSubmit={handleSubmit}>
+        <Form layout="inline">
           <Form.Item label="标题">
             <Input placeholder="请输入标题" onChange={changeTitle} />
           </Form.Item>
@@ -66,7 +104,11 @@ export default () => {
             </Select>
           </Form.Item>
           <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
-            <Button type="primary" htmlType="submit">
+            <Button
+              type="primary"
+              htmlType="submit"
+              onClick={() => handleSubmit(1)}
+            >
               查找
             </Button>
           </Form.Item>
