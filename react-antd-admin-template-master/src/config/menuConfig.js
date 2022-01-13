@@ -184,6 +184,11 @@ const menuList = [{
       title: '家',
       icon: 'home',
       roles: ["admin", "editor", "guest"]
+    }, {
+      path: '/city/transfer',
+      title: '穿梭狂',
+      icon: 'home',
+      roles: ["admin", "editor", "guest"]
     }]
   },
 ];

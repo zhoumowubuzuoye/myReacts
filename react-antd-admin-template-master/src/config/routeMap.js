@@ -105,10 +105,8 @@ const IndexHomes = Loadable({
   loader: () => import('@/views/city/indexs'),
   loading: Loading
 })
-
-
-const City = Loadable({
-  loader: () => import('@/views/city'),
+const Transfer = Loadable({
+  loader: () => import('@/views/city/Transfer'),
   loading: Loading
 })
 export default [{
@@ -239,5 +237,10 @@ export default [{
     path: "/city/indexs",
     roles: ["admin", "editor", "guest"],
     component: IndexHomes
+  },
+  {
+    path: "/city/transfer",
+    roles: ["admin", "editor", "guest"],
+    component: Transfer
   },
 ];

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import pubsub from "pubsub-js";
 
-import { tableList, deleteItem, editItem } from "@/api/table";
+import { tableList } from "@/api/table";
 
 import { Collapse, Form, Input, Select, Button } from "antd";
 const { Panel } = Collapse;
