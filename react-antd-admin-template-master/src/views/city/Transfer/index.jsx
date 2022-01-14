@@ -2,36 +2,39 @@ import React, { useState, useEffect } from "react";
 import "./index.less";
 import { Transfer } from "antd";
 
-const mockData = [];
-for (let i = 0; i < 20; i++) {
-  mockData.push({
-    key: i.toString(),
-    title: `content${i + 1}`,
-    description: `description of content${i + 1}`,
-    disabled: i % 3 < 1,
-  });
-}
-
-const oriTargetKeys = mockData
-  .filter((item) => +item.key % 3 > 1)
-  .map((item) => item.key);
+import { excelList } from "@/api/excel";
 
 export default () => {
-  const [targetKeys, setTargetKeys] = useState(oriTargetKeys);
+  const [transferData, setTransferData] = useState([]);
+  const [targetKeys, setTargetKeys] = useState([]);
   const [selectedKeys, setSelectedKeys] = useState([]);
   const [isTrue, setIsTrue] = useState(false);
   const handleChange = (nextTargetKeys, direction, moveKeys) => {
-    setTargetKeys(setTargetKeys);
-    console.log("targetKeys: ", nextTargetKeys);
+    const data = nextTargetKeys.sort((a, b) => {
+      return a - b;
+    });
+    setTargetKeys(data);
+    console.log("targetKeys: ", data);
     console.log("direction: ", direction);
     console.log("moveKeys: ", moveKeys);
   };
+  useEffect(() => {
+    excelList().then((res) => {
+      console.log(res);
+      let data = res.data.data.items.map((item) => {
+        item.key = item.id;
+        return item;
+      });
+      console.log(data);
+      setTransferData(data);
+    });
+  }, []);
   useEffect(() => {
     if (isTrue) {
       console.log(selectedKeys);
       setIsTrue(false);
     } else {
-        console.log(111);
+      console.log(111);
     }
   });
   const handleSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {
@@ -44,7 +47,7 @@ export default () => {
   return (
     <div>
       <Transfer
-        dataSource={mockData}
+        dataSource={transferData}
         titles={["Source", "Target"]}
         targetKeys={targetKeys}
         selectedKeys={selectedKeys}
@@ -52,6 +55,7 @@ export default () => {
         onSelectChange={handleSelectChange}
         render={(item) => item.title}
         style={{ width: "100%" }}
+        key={"id"}
       />
     </div>
   );
