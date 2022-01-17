@@ -109,6 +109,10 @@ const Transfer = Loadable({
   loader: () => import('@/views/city/Transfer'),
   loading: Loading
 })
+const upLoad = Loadable({
+  loader: () => import('@/views/city/upLoad'),
+  loading: Loading
+})
 export default [{
     path: "/dashboard",
     component: Dashboard,
@@ -242,5 +246,10 @@ export default [{
     path: "/city/transfer",
     roles: ["admin", "editor", "guest"],
     component: Transfer
+  },
+  {
+    path: "/city/upload",
+    roles: ["admin", "editor", "guest"],
+    component: upLoad
   },
 ];

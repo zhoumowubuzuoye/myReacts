@@ -189,6 +189,11 @@ const menuList = [{
       title: '穿梭狂',
       icon: 'home',
       roles: ["admin", "editor", "guest"]
+    }, {
+      path: '/city/upload',
+      title: '上传',
+      icon: 'home',
+      roles: ["admin", "editor", "guest"]
     }]
   },
 ];

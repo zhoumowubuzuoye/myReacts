@@ -38,7 +38,7 @@ const PanelGroup = (props) => {
           return (
             <Col
               key={index}
-              lg={8}
+              lg={6}
               sm={12}
               xs={24}
               onClick={handleSetLineChartData.bind(this, chart.type)}
