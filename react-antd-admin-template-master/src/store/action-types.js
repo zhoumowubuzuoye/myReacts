@@ -18,4 +18,8 @@ export const TAGSVIEW_CLOSE_OTHER_TAGS = "TAGSVIEW_CLOSE_OTHER_TAGS";
 // monitor
 export const BUG_ADD_BUG = "BUG_ADD_BUG";
 
+// allChartData 
+export const ALL_CHART_DATA = 'ALL_CHART_DATA'
 
+//upLoad
+export const UPLOAD_LEFT_CHART = 'UPLOAD_LEFT_CHART'

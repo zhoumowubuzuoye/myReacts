@@ -9,7 +9,7 @@ export default (props) => {
       {props.chartList.map((item) => {
         return (
           <Col key={item.type} lg={6} sm={12} xs={24}>
-            <div className="panel">
+            <div className="panel" onClick={()=>props.chooseLineDate(item.type)}>
               <div className="icon">
                 <Icon
                   className={item.type}

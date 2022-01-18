@@ -1,10 +1,32 @@
-import { login, logout } from "./auth";
-import { getUserInfo, setUserToken, setUserInfo, resetUser } from "./user";
-import { toggleSiderBar, toggleSettingPanel } from "./app";
-import { changeSetting } from "./settings";
-import { addTag, emptyTaglist, deleteTag, closeOtherTags } from "./tagsView";
-import { addBug } from "./monitor";
-
+import {
+  login,
+  logout
+} from "./auth";
+import {
+  getUserInfo,
+  setUserToken,
+  setUserInfo,
+  resetUser
+} from "./user";
+import {
+  toggleSiderBar,
+  toggleSettingPanel
+} from "./app";
+import {
+  changeSetting
+} from "./settings";
+import {
+  addTag,
+  emptyTaglist,
+  deleteTag,
+  closeOtherTags
+} from "./tagsView";
+import {
+  addBug
+} from "./monitor";
+import {
+  leftChartData
+} from './upLoadLeftChart'
 export {
   login,
   logout,
@@ -19,5 +41,6 @@ export {
   emptyTaglist,
   deleteTag,
   closeOtherTags,
-  addBug
+  addBug,
+  leftChartData
 };
