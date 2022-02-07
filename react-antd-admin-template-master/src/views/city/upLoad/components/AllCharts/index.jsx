@@ -8,8 +8,11 @@ import React from "react";
 import "./index.less";
 import { Row, Col } from "antd";
 
-import RaddarChart from "./components/RaddarChart";
-export default () => {
+import RaddarChart from "./components/RaddarChart/RaddarChart";
+import PieChart from "./components/PieChart";
+import BarChart from "./components/BarChart";
+export default (props) => {
+  const { pieData } = props;
   return (
     <div className="all-charts">
       <Row gutter={40}>
@@ -17,10 +20,10 @@ export default () => {
           <RaddarChart></RaddarChart>
         </Col>
         <Col span={8} className="chart">
-          2
+          <PieChart pieData={pieData} />
         </Col>
         <Col span={8} className="chart">
-          3
+          <BarChart />
         </Col>
       </Row>
     </div>

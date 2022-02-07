@@ -12,7 +12,10 @@ const ChooseChart = (props) => {
   const el = useRef();
   useEffect(() => {
     const chartResize = window.addEventListener("resize", () => {
-      chart.resize();
+      if (chart) {
+        chart.resize();
+      }
+      // console.log(chart);
     });
   });
   useEffect(() => {
@@ -25,7 +28,6 @@ const ChooseChart = (props) => {
   }, [el.current]);
   useEffect(() => {
     if (chartDataChange) {
-      console.log(props.chartData);
       setOptions({
         ...props.chartData,
       });
@@ -35,7 +37,6 @@ const ChooseChart = (props) => {
   const [chart, setChart] = useState(null);
   const [chartDataChange, setChartDataChange] = useState([false]);
   const setOptions = ({ expectedData, actualData } = {}) => {
-    console.log(expectedData, actualData);
     if (chart) {
       chart.setOption({
         backgroundColor: "#fff",
